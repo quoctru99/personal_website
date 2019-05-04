@@ -24,11 +24,15 @@ const styles = {
       color: "#9c27b0",
       "font-weight": "bold"
     },
+    font: {
+      "font-weight": "bold",
+      "font-size":"30px"
+    },
 };
 
 var global_props;
 
-export default class Navbar extends Component {
+class Navbar extends Component {
     
     constructor (props) {
         super(props)
@@ -58,11 +62,41 @@ function Navigation (props)
     return (
         
             <div>
-                <Button color="inherit"><Link className="link" to="/">{global_props.home}</Link></Button>
-                <Button color="inherit"><Link className="link" to="/login">{global_props.login}</Link></Button>
-                <Button color="inherit"><Link className="link" to="/github">{global_props.github}</Link></Button>
-                <Button color="inherit"><Link className="link" to="/contact">{global_props.contact}</Link></Button>
+                <Link className="link" to="/">
+                  <Button color="inherit">
+                    <Typography className={styles.font} variant="button" color="primary">
+                      {global_props.home}
+                    </Typography>
+                  </Button>
+                </Link>
+
+                <Link className="link" to="/login">
+                  <Button color="inherit">
+                    <Typography variant="button" color="primary">
+                      {global_props.login}
+                    </Typography>
+                  </Button>
+                </Link>
+
+                <Link className="link" to="/github">
+                  <Button color="inherit">
+                    <Typography variant="button" color="primary">
+                      {global_props.github}
+                    </Typography>
+                  </Button>
+                </Link>
+
+                <Link className="link" to="/contact">
+                  <Button color="inherit">
+                    <Typography variant="button" color="primary">
+                      {global_props.contact}
+                    </Typography>
+                  </Button>
+                </Link>
             </div>
         
     );
 }
+
+
+export default Navbar;
