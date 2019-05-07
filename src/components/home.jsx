@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../styles/home.sass'
 
 
 export default class Home extends Component {
@@ -9,7 +10,9 @@ export default class Home extends Component {
 
     render () {
         return (
-            <h1> cc ne </h1>
+            <div className="mainground">
+                <button>something</button>
+            </div>
         );
     }
 }
