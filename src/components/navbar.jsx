@@ -24,10 +24,6 @@ const styles = {
       color: "#9c27b0",
       "font-weight": "bold"
     },
-    font: {
-      "font-weight": "bold",
-      "font-size":"30px"
-    },
 };
 
 var global_props;
@@ -64,7 +60,7 @@ function Navigation (props)
             <div>
                 <Link className="link" to="/">
                   <Button color="inherit">
-                    <Typography className={styles.font} variant="button" color="primary">
+                    <Typography className="link" variant="button" color="primary">
                       {global_props.home}
                     </Typography>
                   </Button>
@@ -72,7 +68,7 @@ function Navigation (props)
 
                 <Link className="link" to="/login">
                   <Button color="inherit">
-                    <Typography variant="button" color="primary">
+                    <Typography className="link" variant="button" color="primary">
                       {global_props.login}
                     </Typography>
                   </Button>
@@ -80,7 +76,7 @@ function Navigation (props)
 
                 <Link className="link" to="/github">
                   <Button color="inherit">
-                    <Typography variant="button" color="primary">
+                    <Typography className="link" variant="button" color="primary">
                       {global_props.github}
                     </Typography>
                   </Button>
@@ -88,7 +84,7 @@ function Navigation (props)
 
                 <Link className="link" to="/contact">
                   <Button color="inherit">
-                    <Typography variant="button" color="primary">
+                    <Typography className="link" variant="button" color="primary">
                       {global_props.contact}
                     </Typography>
                   </Button>
