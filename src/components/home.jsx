@@ -13,7 +13,7 @@ export default class Home extends Component {
         return (
             <div className="mainground">
                 <div id="intro">
-                    <Typography aling='center' className="intro-text" variant="h4" >
+                    <Typography aling='center' className="intro-text" variant="h3" >
                         Tru Nguyen
                     </Typography>
                     <Typography aling='center' className="intro-text" variant="h5">
