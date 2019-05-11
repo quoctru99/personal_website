@@ -16,7 +16,12 @@ export default class Home extends Component {
                         A CS student who always try to get better everyday.<br/> Who is 
                         eager to learn new thing.
                     </Typography>
-                    
+                </div>
+                <div className="expand">
+                    <Typography aling='center' className="intro-text" variant="h5">
+                        Learn more about me
+                    </Typography>
+                    <i class="material-icons ic">expand_more</i>
                 </div>
             </div>
         );
