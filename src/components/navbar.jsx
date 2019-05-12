@@ -16,7 +16,7 @@ import {
 
 const styles = {
     abar: {
-        "background-color": "transparent",
+        flexGrow: 1,
     },
     grow: {
       flexGrow: 1,
@@ -38,7 +38,7 @@ class Navbar extends Component {
     render () {
         return (
             <div id="navbar">
-            <AppBar position="static" style={styles.abar}>
+            <AppBar id="appbar" position="static" style={styles.abar}>
               <Toolbar>
                 <Typography variant="h6" color="inherit" style={styles.grow}>
                   Tru Nguyen
