@@ -20,9 +20,9 @@ const styles = {
     },
     grow: {
       flexGrow: 1,
-      "font-family": "lato",
+      "fontFamily": "lato",
       color: "#9c27b0",
-      "font-weight": "bold"
+      "fontWeight": "bold"
     },
 };
 

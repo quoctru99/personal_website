@@ -11,6 +11,8 @@ import '../styles/home.sass'
 
 export default class Home extends Component {
 
+    
+
     test = [
         {Repo: "personal_website", Language: "javascript", Stars: "2", Updated: "14 mins"},
         {Repo: "StackRecetee", Language: "java", Stars: "1", Updated: "13 days"},
@@ -37,7 +39,7 @@ export default class Home extends Component {
                         <Typography aling='center' className="intro-text" variant="h5">
                             Learn more about me
                         </Typography>
-                        <i class="material-icons ic">expand_more</i>
+                        <i className="material-icons ic">expand_more</i>
                     </div>
                 </div>
                 <GitHub data={this.test}/>
@@ -47,9 +49,17 @@ export default class Home extends Component {
 }
 
 function GitHub (props) {
+
+    window.addEventListener('scroll', function() {
+        // eslint-disable-next-line no-restricted-globals
+        if(pageYOffset > 0) {
+          document.getElementById("appbar").style.background = "white"
+        }
+    });
+
     const data = props.data
-    const body = data.map(obj => (
-        <tr>
+    const body = data.map( (obj,i) => (
+        <tr key={i}>
             <td>{obj.Repo}</td>
             <td>{obj.Language}</td>
             <td>{obj.Stars}</td>
@@ -59,7 +69,7 @@ function GitHub (props) {
     )
 
     return (
-        <div class="wrapper-table">
+        <div className="wrapper-table">
             <table id="git-table">
                 <thead>
                     <tr>
