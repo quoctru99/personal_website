@@ -1,11 +1,5 @@
 import React, { Component } from 'react';
 import Typography from '@material-ui/core/Typography'
-import Table from '@material-ui/core/Table'
-import TableBody from '@material-ui/core/TableBody'
-import TableCell from '@material-ui/core/TableCell'
-import TableHead from '@material-ui/core/TableHead'
-import TableRow from '@material-ui/core/TableRow'
-import Paper from '@material-ui/core/Paper'
 import '../styles/home.sass'
 
 
@@ -43,6 +37,7 @@ export default class Home extends Component {
                     </div>
                 </div>
                 <GitHub data={this.test}/>
+                <Resume/>
             </div>
         );
     }
@@ -54,6 +49,8 @@ function GitHub (props) {
         // eslint-disable-next-line no-restricted-globals
         if(pageYOffset > 0) {
           document.getElementById("appbar").style.background = "white"
+        } else {
+            document.getElementById("appbar").style.background = "transparent"
         }
     });
 
@@ -83,6 +80,15 @@ function GitHub (props) {
                     {body}
                 </tbody>
             </table>
+        </div>
+    )
+}
+
+function Resume (props) {
+
+    return (
+        <div>
+            My Resume
         </div>
     )
 }
