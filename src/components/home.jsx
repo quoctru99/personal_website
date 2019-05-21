@@ -87,8 +87,16 @@ function GitHub (props) {
 function Resume (props) {
 
     return (
-        <div>
-            My Resume
+        <div className="resume"> 
+            <h1> My Resume </h1>
+            <div id="resumeform">
+                <h2 className="head-res">Tru Nguyen</h2>
+                <h4 className="head-res">Computer Science student</h4>
+                <br/>
+                <p>Phone: 312-208-1234</p>
+                <p>email: tqnguy40@neiu.edu</p>
+                <p>GitHub: https://github.com/quoctru99</p>
+            </div>
         </div>
     )
 }
