@@ -56,7 +56,6 @@ class Navbar extends Component {
 function Navigation (props)
 {
     return (
-        
             <div>
                 <Link className="link" to="/">
                   <Button color="inherit">

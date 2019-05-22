@@ -90,12 +90,26 @@ function Resume (props) {
         <div className="resume"> 
             <h1> My Resume </h1>
             <div id="resumeform">
-                <h2 className="head-res">Tru Nguyen</h2>
-                <h4 className="head-res">Computer Science student</h4>
-                <br/>
-                <p>Phone: 312-208-1234</p>
-                <p>email: tqnguy40@neiu.edu</p>
-                <p>GitHub: https://github.com/quoctru99</p>
+                <header>
+                    <h2 className="head-res">Tru Nguyen</h2>
+                    <h4 className="head-res">Computer Science student</h4>
+                    <br/>
+                    <p>Phone: 312-208-1234</p>
+                    <p>Email: tqnguy40@neiu.edu</p>
+                    <p>GitHub: <a href="https://github.com/quoctru99" target="_blank"> https://github.com/quoctru99 </a></p>
+                </header>
+                    <hr/>
+                <section>
+                    <h1>Education : </h1>
+                        <p>School: Northeastern Illinois University</p>
+                        <p>Major: Computer Science</p>
+                        <p>GPA: 3.55</p>
+                    <h1>Briefly about skills : </h1>
+                        <p>Java, Python, Nodejs, PHP</p>
+                    <h1>Experience : </h1>
+                        <p>Full Stack Developer – websites (ctvface.com)</p>
+                        <p>Internship at Hu-Friedy</p>
+                </section>
             </div>
         </div>
     )
