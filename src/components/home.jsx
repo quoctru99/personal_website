@@ -57,6 +57,7 @@ function GitHub (props) {
     const data = props.data
     const body = data.map( (obj,i) => (
         <tr key={i}>
+            <td>{i=i+1}</td>
             <td>{obj.Repo}</td>
             <td>{obj.Language}</td>
             <td>{obj.Stars}</td>
@@ -70,6 +71,7 @@ function GitHub (props) {
             <table id="git-table">
                 <thead>
                     <tr>
+                        <th>#</th>
                         <th>Repo Name</th>
                         <th>Language</th>
                         <th>Stars</th>
