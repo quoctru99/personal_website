@@ -31,7 +31,7 @@
 //table part
 .wrapper-table
     width: 40%
-    overflow: hidden
+    table-layout: fixed
     margin: auto
     white-space: normal
     box-sizing: content-box
@@ -46,8 +46,6 @@
         font-size: 15px
         
     tbody > tr > td
-        
-        display: table-cell
         padding: 20px
         border-top: 1px solid #E0E0E0
 
@@ -78,3 +76,29 @@ a
     text-decoration: none
 a:hover
     color: green
+
+
+
+@media only screen and (max-width: 1138px) 
+    thead > tr > th:nth-child(5)
+        display: none 
+    tbody > tr > td:nth-child(5)
+        display: none 
+
+@media only screen and (max-width: 918px) 
+    thead > tr > th:nth-child(4)
+        display: none 
+    tbody > tr > td:nth-child(4)
+        display: none 
+
+@media only screen and (max-width: 757px) 
+    thead > tr > th:nth-child(3)
+        display: none 
+    tbody > tr > td:nth-child(3)
+        display: none 
+
+@media only screen and (max-width: 495px) 
+    thead > tr > th:nth-child(2)
+        display: none 
+    tbody > tr > td:nth-child(2)
+        display: none 
