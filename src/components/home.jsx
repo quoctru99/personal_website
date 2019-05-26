@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import Typography from '@material-ui/core/Typography'
 import '../styles/home.sass'
-
+import Fab from '@material-ui/core/Fab';
+import Button from '@material-ui/core/Button';
+import AddIcon from '@material-ui/icons/Add';
+import Icon from '@material-ui/core/Icon';
 
 export default class Home extends Component {
 
@@ -57,7 +60,7 @@ function GitHub (props) {
     const data = props.data
     const body = data.map( (obj,i) => (
         <tr key={i}>
-            <td>{i=i+1}</td>
+            <td>{i=i+1} <button className="expandButton"> <AddIcon className="addSvg" /></button></td>
             <td>{obj.Repo}</td>
             <td>{obj.Language}</td>
             <td>{obj.Stars}</td>
