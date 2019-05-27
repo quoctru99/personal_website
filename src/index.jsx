@@ -6,9 +6,6 @@ import Navbar from './components/navbar';
 import {
     BrowserRouter as Router, 
     Route,
-    Link,
-    Switch,
-    Redirect 
 } from 'react-router-dom';
 
 import './styles/index.sass'

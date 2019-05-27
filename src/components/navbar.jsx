@@ -7,11 +7,7 @@ import React, { Component } from 'react';
 import '../styles/navbar.sass'
 
 import {
-    BrowserRouter as Router, 
-    Route,
     Link,
-    Switch,
-    Redirect 
 } from 'react-router-dom';
 
 const styles = {

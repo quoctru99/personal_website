@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import Typography from '@material-ui/core/Typography'
 import '../styles/home.sass'
-import Fab from '@material-ui/core/Fab';
-import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
-import Icon from '@material-ui/core/Icon';
+
 
 export default class Home extends Component {
 
@@ -56,10 +54,11 @@ function GitHub (props) {
             document.getElementById("appbar").style.background = "transparent"
         }
     });
+    
 
     const data = props.data
     const body = data.map( (obj,i) => (
-        <tr key={i}>
+        <tr key={i} data={i} onLoad={responsive(i)}>
             <td>{i=i+1} <button className="expandButton"> <AddIcon className="addSvg" /></button></td>
             <td>{obj.Repo}</td>
             <td>{obj.Language}</td>
@@ -118,4 +117,53 @@ function Resume (props) {
             </div>
         </div>
     )
+}
+
+function responsive (e) {
+    var updated = window.matchMedia("(max-width: 1138px)")
+    updated.addListener((x) => {
+        if (x.matches) {
+            document.querySelector("thead th:nth-child(5)").style.display = "none"
+            document.querySelector(`tr[data*='${e}'] > td:nth-child(5)`).style.display = "none"
+            document.querySelector(".expandButton").style.display = "inline-block"
+        } else {
+            document.querySelector("thead th:nth-child(5)").style.display = "table-cell"
+            document.querySelector(`tr[data*='${e}'] > td:nth-child(5)`).style.display = "table-cell"
+            document.querySelector(".expandButton").style.display = "none"
+        }
+    })
+
+    var star = window.matchMedia("(max-width: 918px)")
+    star.addListener((x) => {
+        if (x.matches) {
+            document.querySelector("thead th:nth-child(4)").style.display = "none"
+            document.querySelector(`tr[data*='${e}'] > td:nth-child(4)`).style.display = "none"
+        } else {
+            document.querySelector("thead th:nth-child(4)").style.display = "table-cell"
+            document.querySelector(`tr[data*='${e}'] > td:nth-child(4)`).style.display = "table-cell"
+        }
+    })
+
+    var Language = window.matchMedia("(max-width: 757px) ")
+    Language.addListener((x) => {
+        if (x.matches) {
+            document.querySelector("thead th:nth-child(3)").style.display = "none"
+            document.querySelector(`tr[data*='${e}'] > td:nth-child(3)`).style.display = "none"
+        } else {
+            document.querySelector("thead th:nth-child(3)").style.display = "table-cell"
+            document.querySelector(`tr[data*='${e}'] > td:nth-child(3)`).style.display = "table-cell"
+        }
+    })
+
+    var repo = window.matchMedia("(max-width: 495px)")
+    repo.addListener((x) => {
+        if (x.matches) {
+            document.querySelector("thead th:nth-child(2)").style.display = "none"
+            document.querySelector(`tr[data*='${e}'] > td:nth-child(2)`).style.display = "none"
+        } else {
+            document.querySelector("thead th:nth-child(2)").style.display = "table-cell"
+            document.querySelector(`tr[data*='${e}'] > td:nth-child(2)`).style.display = "table-cell"
+        }
+    })
+   
 }

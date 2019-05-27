@@ -31,10 +31,9 @@
 //table part
 .wrapper-table
     width: 40%
-    table-layout: fixed
     margin: auto
     white-space: normal
-    box-sizing: content-box
+   
 
 #git-table
     border-collapse: collapse
@@ -46,25 +45,27 @@
         font-size: 15px
         
     tbody > tr > td
-        padding: 20px
+        padding: 15px
         border-top: 1px solid #E0E0E0
 
     tbody > tr > td:first-child
         white-space: nowrap
-        display: inline-block
 
 .expandButton
+    display: none
     width: 20px !important
     height: 20px !important
     border-radius: 100%
     border: none
     background: #2196F3
     cursor: pointer
-    
-
-    
+    vertical-align: middle
+    outline: 0
 
 .addSvg
+    position: relative
+    left: -8px
+    top: -3px    
 
 
 .resume
@@ -100,6 +101,8 @@ a:hover
 
 
 @media only screen and (max-width: 1138px) 
+    .expandButton
+        display: inline-block
     thead > tr > th:nth-child(5)
         display: none 
     tbody > tr > td:nth-child(5)
