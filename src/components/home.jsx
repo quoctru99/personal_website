@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Typography from '@material-ui/core/Typography'
 import '../styles/home.sass'
-import AddIcon from '@material-ui/icons/Add';
+
 
 
 export default class Home extends Component {
@@ -59,7 +59,7 @@ function GitHub (props) {
     const data = props.data
     const body = data.map( (obj,i) => (
         <tr key={i} data={i} onLoad={responsive(i)}>
-            <td>{i=i+1} <button className="expandButton"> <AddIcon className="addSvg" /></button></td>
+            <td>{i=i+1} <button onClick={moreInfo.bind(this)} className="expandButton"> </button></td>
             <td>{obj.Repo}</td>
             <td>{obj.Language}</td>
             <td>{obj.Stars}</td>
@@ -119,17 +119,35 @@ function Resume (props) {
     )
 }
 
+
+function moreInfo (e) {
+    e.target.parentNode.parentNode.querySelectorAll("td")
+        .forEach((td) => {
+            if (td.style.display === "none") 
+            {
+                console.log(td)
+            }
+        })
+}
+
 function responsive (e) {
     var updated = window.matchMedia("(max-width: 1138px)")
     updated.addListener((x) => {
         if (x.matches) {
             document.querySelector("thead th:nth-child(5)").style.display = "none"
             document.querySelector(`tr[data*='${e}'] > td:nth-child(5)`).style.display = "none"
-            document.querySelector(".expandButton").style.display = "inline-block"
+            
+            document.querySelectorAll(".expandButton").forEach(x => {
+                x.style.display = "inline-block"
+            })
+
         } else {
             document.querySelector("thead th:nth-child(5)").style.display = "table-cell"
             document.querySelector(`tr[data*='${e}'] > td:nth-child(5)`).style.display = "table-cell"
-            document.querySelector(".expandButton").style.display = "none"
+           
+            document.querySelectorAll(".expandButton").forEach(x => {
+                x.style.display = "none"
+            })
         }
     })
 
