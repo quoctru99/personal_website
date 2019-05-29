@@ -121,13 +121,22 @@ function Resume (props) {
 
 
 function moreInfo (e) {
-    e.target.parentNode.parentNode.querySelectorAll("td")
+
+    var moreinfo = []
+    var parent = e.target.parentNode.parentNode.querySelectorAll("td")
         .forEach((td) => {
             if (td.style.display === "none") 
             {
-                console.log(td)
+                moreinfo.push(td)
             }
         })
+
+    var divmore = document.createElement("div")
+    var data = moreinfo.map((x, i) => (
+            <p>{x}</p>
+        )
+    )
+    console.log(data)
 }
 
 function responsive (e) {
