@@ -123,7 +123,8 @@ function Resume (props) {
 function moreInfo (e) {
 
     var moreinfo = []
-    var parent = e.target.parentNode.parentNode.querySelectorAll("td")
+    var parent = e.target.parentNode.parentNode
+    parent.querySelectorAll("td")
         .forEach((td) => {
             if (td.style.display === "none") 
             {
@@ -131,12 +132,23 @@ function moreInfo (e) {
             }
         })
 
-    var divmore = document.createElement("div")
-    var data = moreinfo.map((x, i) => (
-            <p>{x}</p>
-        )
-    )
+    var divmore = document.createElement("tr")
+    var data = moreinfo.map((item,i) => (
+        <div key={i}>
+            <p> {item.innerText} </p>
+        </div>
+    ))
+
+
+    var wrapData = document.createElement("div")
+    wrapData.innerHTML += <div>{data}</div>
+
+    divmore.appendChild(wrapData)
+    parent.after(divmore)
+
     console.log(data)
+    
+
 }
 
 function responsive (e) {
