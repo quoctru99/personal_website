@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Typography from '@material-ui/core/Typography'
+import ReactDOM from 'react-dom';
 import '../styles/home.sass'
 
 
@@ -139,14 +140,10 @@ function moreInfo (e) {
         </div>
     ))
 
-
-    var wrapData = document.createElement("div")
-    wrapData.innerHTML += <div>{data}</div>
-
-    divmore.appendChild(wrapData)
+    var divmore = document.createElement("div")
     parent.after(divmore)
 
-    console.log(data)
+    ReactDOM.render(data, divmore)
     
 
 }
