@@ -124,6 +124,15 @@ function Resume (props) {
 function moreInfo (e) {
 
     var moreinfo = []
+    var infohead = []
+
+    var thead = document.querySelectorAll("#git-table > thead > tr > th")
+        .forEach((td) => {
+            if (td.style.display === "none") 
+            {
+                infohead.push(td)
+            }
+        })
     var parent = e.target.parentNode.parentNode
     parent.querySelectorAll("td")
         .forEach((td) => {
@@ -136,7 +145,7 @@ function moreInfo (e) {
     var divmore = document.createElement("tr")
     var data = moreinfo.map((item,i) => (
         <div key={i}>
-            <p> {item.innerText} </p>
+            <p className="moreinfo">{infohead[i].innerText + ""} {item.innerText} </p>
         </div>
     ))
 
