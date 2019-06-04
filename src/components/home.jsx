@@ -144,12 +144,13 @@ function moreInfo (e) {
 
     var divmore = document.createElement("tr")
     var data = moreinfo.map((item,i) => (
-        <div key={i}>
-            <p className="moreinfo">{infohead[i].innerText + ""} {item.innerText} </p>
-        </div>
+        <tr key={i} >
+            <td colSpan={5-moreinfo.length} className="moreinfo">{infohead[i].innerText + ""} {item.innerText} </td>
+        </tr>
+       
     ))
 
-    var divmore = document.createElement("div")
+    var divmore = document.createElement("tr")
     parent.after(divmore)
 
     ReactDOM.render(data, divmore)
