@@ -126,7 +126,7 @@ function moreInfo (e) {
     var moreinfo = []
     var infohead = []
 
-    var thead = document.querySelectorAll("#git-table > thead > tr > th")
+    document.querySelectorAll("#git-table > thead > tr > th")
         .forEach((td) => {
             if (td.style.display === "none") 
             {
@@ -134,7 +134,15 @@ function moreInfo (e) {
             }
         })
     var parent = e.target.parentNode.parentNode
-    parent.querySelectorAll("td")
+    
+    if(parent.classList.contains('parent')) {
+
+        parent.nextSibling.remove()
+        parent.classList.remove('parent')
+
+    } else {
+        parent.classList.add('parent')
+        parent.querySelectorAll("td")
         .forEach((td) => {
             if (td.style.display === "none") 
             {
@@ -144,24 +152,25 @@ function moreInfo (e) {
 
 
     var data = moreinfo.map((item,i) => (       
-        <li data={i}>
+        <li data={i} key={i}>
             <span className="title">{infohead[i].innerText} </span>
             <span className="Data">{item.innerText}</span>
         </li>
     ))
 
     var divmore = document.createElement("tr")
+    divmore.setAttribute('class', 'child')
     parent.after(divmore)
 
     ReactDOM.render(
-    <td colSpan={5-moreinfo.length} className="moreinfo child" >
+    <td colSpan={5-moreinfo.length} className="moreinfo" >
         <ul>
             {data}
         </ul>
     </td>
     , divmore)
-    
 
+    }
 }
 
 function responsive (e) {
