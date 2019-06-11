@@ -43,6 +43,10 @@ export default class Home extends Component {
             </div>
         );
     }
+
+    componentDidMount() {
+        responsive()
+    }
 }
 
 function GitHub (props) {
@@ -59,7 +63,7 @@ function GitHub (props) {
 
     const data = props.data
     const body = data.map( (obj,i) => (
-        <tr key={i} data={i} onLoad={responsive(i)}>
+        <tr key={i} data={i} className="unique">
             <td>{i=i+1} <button onClick={moreInfo.bind(this)} className="expandButton"> </button></td>
             <td>{obj.Repo}</td>
             <td>{obj.Language}</td>
@@ -73,7 +77,7 @@ function GitHub (props) {
         <div className="wrapper-table">
             <table id="git-table">
                 <thead>
-                    <tr>
+                    <tr className="unique">
                         <th>#</th>
                         <th>Repo Name</th>
                         <th>Language</th>
@@ -173,12 +177,15 @@ function moreInfo (e) {
     }
 }
 
-function responsive (e) {
+function responsive () {
     var updated = window.matchMedia("(max-width: 1138px)")
+    
     updated.addListener((x) => {
         if (x.matches) {
             document.querySelector("thead th:nth-child(5)").style.display = "none"
-            document.querySelector(`tr[data*='${e}'] > td:nth-child(5)`).style.display = "none"
+            document.querySelectorAll(`#git-table > tbody > tr.unique`).forEach((e) => {
+                e.querySelector("td:nth-child(5)").style.display = "none"
+            })
             
             document.querySelectorAll(".expandButton").forEach(x => {
                 x.style.display = "inline-block"
@@ -186,7 +193,9 @@ function responsive (e) {
 
         } else {
             document.querySelector("thead th:nth-child(5)").style.display = "table-cell"
-            document.querySelector(`tr[data*='${e}'] > td:nth-child(5)`).style.display = "table-cell"
+            document.querySelectorAll(`#git-table > tbody > tr.unique`).forEach((e) => {
+                e.querySelector("td:nth-child(5)").style.display = "table-cell"
+            })
            
             document.querySelectorAll(".expandButton").forEach(x => {
                 x.style.display = "none"
@@ -198,10 +207,14 @@ function responsive (e) {
     star.addListener((x) => {
         if (x.matches) {
             document.querySelector("thead th:nth-child(4)").style.display = "none"
-            document.querySelector(`tr[data*='${e}'] > td:nth-child(4)`).style.display = "none"
+            document.querySelectorAll(`#git-table > tbody > tr.unique`).forEach((e) => {
+                e.querySelector("td:nth-child(4)").style.display = "none"
+            })
         } else {
             document.querySelector("thead th:nth-child(4)").style.display = "table-cell"
-            document.querySelector(`tr[data*='${e}'] > td:nth-child(4)`).style.display = "table-cell"
+            document.querySelectorAll(`#git-table > tbody > tr.unique`).forEach((e) => {
+                e.querySelector("td:nth-child(4)").style.display = "table-cell"
+            })
         }
     })
 
@@ -209,10 +222,14 @@ function responsive (e) {
     Language.addListener((x) => {
         if (x.matches) {
             document.querySelector("thead th:nth-child(3)").style.display = "none"
-            document.querySelector(`tr[data*='${e}'] > td:nth-child(3)`).style.display = "none"
+            document.querySelectorAll(`#git-table > tbody > tr.unique`).forEach((e) => {
+                e.querySelector("td:nth-child(3)").style.display = "none"
+            })
         } else {
             document.querySelector("thead th:nth-child(3)").style.display = "table-cell"
-            document.querySelector(`tr[data*='${e}'] > td:nth-child(3)`).style.display = "table-cell"
+            document.querySelectorAll(`#git-table > tbody > tr.unique`).forEach((e) => {
+                e.querySelector("td:nth-child(3)").style.display = "table-cell"
+            })
         }
     })
 
@@ -220,11 +237,34 @@ function responsive (e) {
     repo.addListener((x) => {
         if (x.matches) {
             document.querySelector("thead th:nth-child(2)").style.display = "none"
-            document.querySelector(`tr[data*='${e}'] > td:nth-child(2)`).style.display = "none"
+            document.querySelectorAll(`#git-table > tbody > tr.unique`).forEach((e) => {
+                e.querySelector("td:nth-child(2)").style.display = "none"
+            })
         } else {
             document.querySelector("thead th:nth-child(2)").style.display = "table-cell"
-            document.querySelector(`tr[data*='${e}'] > td:nth-child(2)`).style.display = "table-cell"
+            document.querySelectorAll(`#git-table > tbody > tr.unique`).forEach((e) => {
+                e.querySelector("td:nth-child(2)").style.display = "table-cell"
+            })
         }
     })
    
+}
+
+function stretch(x,e) {
+    if (x.matches) {
+        document.querySelector(`thead th:nth-child(${e})`).style.display = "none"
+        document.querySelector(`tr[data*='${e}'] > td:nth-child(${e})`).style.display = "none"
+        
+        document.querySelectorAll(".expandButton").forEach(x => {
+            x.style.display = "inline-block"
+        })
+
+    } else {
+        document.querySelector(`thead th:nth-child(${e})`).style.display = "table-cell"
+        document.querySelector(`tr[data*='${e}'] > td:nth-child(${e})`).style.display = "table-cell"
+       
+        document.querySelectorAll(".expandButton").forEach(x => {
+            x.style.display = "none"
+        })
+    }
 }
