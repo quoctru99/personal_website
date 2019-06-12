@@ -181,90 +181,88 @@ function responsive () {
     var updated = window.matchMedia("(max-width: 1138px)")
     
     updated.addListener((x) => {
-        if (x.matches) {
-            document.querySelector("thead th:nth-child(5)").style.display = "none"
-            document.querySelectorAll(`#git-table > tbody > tr.unique`).forEach((e) => {
-                e.querySelector("td:nth-child(5)").style.display = "none"
-            })
-            
+        
+
+        if(x.matches) {
             document.querySelectorAll(".expandButton").forEach(x => {
                 x.style.display = "inline-block"
             })
-
         } else {
-            document.querySelector("thead th:nth-child(5)").style.display = "table-cell"
-            document.querySelectorAll(`#git-table > tbody > tr.unique`).forEach((e) => {
-                e.querySelector("td:nth-child(5)").style.display = "table-cell"
-            })
-           
             document.querySelectorAll(".expandButton").forEach(x => {
                 x.style.display = "none"
             })
         }
-    })
 
-    var star = window.matchMedia("(max-width: 918px)")
-    star.addListener((x) => {
-        if (x.matches) {
-            document.querySelector("thead th:nth-child(4)").style.display = "none"
-            document.querySelectorAll(`#git-table > tbody > tr.unique`).forEach((e) => {
-                e.querySelector("td:nth-child(4)").style.display = "none"
-            })
-        } else {
-            document.querySelector("thead th:nth-child(4)").style.display = "table-cell"
-            document.querySelectorAll(`#git-table > tbody > tr.unique`).forEach((e) => {
-                e.querySelector("td:nth-child(4)").style.display = "table-cell"
-            })
-        }
-    })
+        stretch(x,5)
 
-    var Language = window.matchMedia("(max-width: 757px) ")
-    Language.addListener((x) => {
-        if (x.matches) {
-            document.querySelector("thead th:nth-child(3)").style.display = "none"
-            document.querySelectorAll(`#git-table > tbody > tr.unique`).forEach((e) => {
-                e.querySelector("td:nth-child(3)").style.display = "none"
-            })
-        } else {
-            document.querySelector("thead th:nth-child(3)").style.display = "table-cell"
-            document.querySelectorAll(`#git-table > tbody > tr.unique`).forEach((e) => {
-                e.querySelector("td:nth-child(3)").style.display = "table-cell"
-            })
-        }
-    })
 
-    var repo = window.matchMedia("(max-width: 495px)")
-    repo.addListener((x) => {
-        if (x.matches) {
-            document.querySelector("thead th:nth-child(2)").style.display = "none"
-            document.querySelectorAll(`#git-table > tbody > tr.unique`).forEach((e) => {
-                e.querySelector("td:nth-child(2)").style.display = "none"
-            })
-        } else {
-            document.querySelector("thead th:nth-child(2)").style.display = "table-cell"
-            document.querySelectorAll(`#git-table > tbody > tr.unique`).forEach((e) => {
-                e.querySelector("td:nth-child(2)").style.display = "table-cell"
-            })
-        }
     })
-   
-}
-
-function stretch(x,e) {
-    if (x.matches) {
-        document.querySelector(`thead th:nth-child(${e})`).style.display = "none"
-        document.querySelector(`tr[data*='${e}'] > td:nth-child(${e})`).style.display = "none"
-        
+    stretch(updated,5)
+    if(updated.matches) {
         document.querySelectorAll(".expandButton").forEach(x => {
             x.style.display = "inline-block"
         })
+    }
+    
+    var star = window.matchMedia("(max-width: 918px)")
+    star.addListener((x) => {
+        stretch(x,4)
+
+        
+    })
+    stretch(star,4)
+    if(star.matches) {
+        document.querySelectorAll(".expandButton").forEach(x => {
+            x.style.display = "inline-block"
+        })
+    }
+
+    var Language = window.matchMedia("(max-width: 757px) ")
+    Language.addListener((x) => {
+        stretch(x,3)
+
+        if(x.matches) {
+            document.querySelectorAll(".expandButton").forEach(x => {
+                x.style.display = "inline-block"
+            })
+        }
+    })
+    stretch(Language,3)
+    if(Language.matches) {
+        document.querySelectorAll(".expandButton").forEach(x => {
+            x.style.display = "inline-block"
+        })
+    }
+
+    var repo = window.matchMedia("(max-width: 495px)")
+    repo.addListener((x) => {
+        stretch(x,2)
+
+        if(x.matches) {
+            document.querySelectorAll(".expandButton").forEach(x => {
+                x.style.display = "inline-block"
+            })
+        }
+    })
+    stretch(repo,2)
+    if(repo.matches) {
+        document.querySelectorAll(".expandButton").forEach(x => {
+            x.style.display = "inline-block"
+        })
+    }
+}
+
+function stretch(z,id) {
+    if (z.matches) {
+        document.querySelector(`thead th:nth-child(${id})`).style.display = "none"
+        document.querySelectorAll(`#git-table > tbody > tr.unique`).forEach((e) => {
+            e.querySelector(`td:nth-child(${id})`).style.display = "none"
+        })
 
     } else {
-        document.querySelector(`thead th:nth-child(${e})`).style.display = "table-cell"
-        document.querySelector(`tr[data*='${e}'] > td:nth-child(${e})`).style.display = "table-cell"
-       
-        document.querySelectorAll(".expandButton").forEach(x => {
-            x.style.display = "none"
+        document.querySelector(`thead th:nth-child(${id})`).style.display = "table-cell"
+        document.querySelectorAll(`#git-table > tbody > tr.unique`).forEach((e) => {
+            e.querySelector(`td:nth-child(${id})`).style.display = "table-cell"
         })
     }
 }
