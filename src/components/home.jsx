@@ -7,7 +7,13 @@ import '../styles/home.sass'
 
 export default class Home extends Component {
 
-    
+    constructor (props) {
+        super(props)
+        this.state = {
+            moreinfo: [],
+            infohead: []
+        }
+    }
 
     test = [
         {Repo: "personal_website", Language: "javascript", Stars: "2", Updated: "14 mins"},
@@ -153,40 +159,52 @@ function moreInfo (e) {
                 moreinfo.push(td)
             }
         })
-
-
-    var data = moreinfo.map((item,i) => (       
-        <li data={i} key={i}>
-            <span className="title">{infohead[i].innerText} </span>
-            <span className="Data">{item.innerText}</span>
-        </li>
-    ))
+    }
 
     var divmore = document.createElement("tr")
     divmore.setAttribute('class', 'child')
     parent.after(divmore)
 
-    ReactDOM.render(
-    <td colSpan={5-moreinfo.length} className="moreinfo" >
-        <ul>
-            {data}
-        </ul>
-    </td>
-    , divmore)
+    document.addEventListener("updated", (e)=>{
+        console.log(e)
+    })
 
+    addMoreInfoHtml(moreinfo, infohead, divmore)
+}
+
+function addMoreInfoHtml(moreinfo, infohead, divmore) {
+
+    if(moreinfo.length > 0) {
+        var data = moreinfo.map((item,i) => (       
+            <li data={i} key={i}>
+                <span className="title">{infohead[i].innerText} </span>
+                <span className="Data">{item.innerText}</span>
+            </li>
+        ))
+    
+        
+    
+        ReactDOM.render(
+        <td colSpan={5-moreinfo.length} className="moreinfo" >
+            <ul>
+                {data}
+            </ul>
+        </td>
+        , divmore)
     }
+
 }
 
 function responsive () {
     var updated = window.matchMedia("(max-width: 1138px)")
     
     updated.addListener((x) => {
-        
 
         if(x.matches) {
             document.querySelectorAll(".expandButton").forEach(x => {
                 x.style.display = "inline-block"
             })
+
         } else {
             document.querySelectorAll(".expandButton").forEach(x => {
                 x.style.display = "none"
@@ -258,7 +276,6 @@ function stretch(z,id) {
         document.querySelectorAll(`#git-table > tbody > tr.unique`).forEach((e) => {
             e.querySelector(`td:nth-child(${id})`).style.display = "none"
         })
-
     } else {
         document.querySelector(`thead th:nth-child(${id})`).style.display = "table-cell"
         document.querySelectorAll(`#git-table > tbody > tr.unique`).forEach((e) => {
