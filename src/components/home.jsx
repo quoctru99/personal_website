@@ -147,8 +147,10 @@ function moreInfo (e) {
     
     if(parent.classList.contains('parent')) {
 
-        parent.nextSibling.remove()
-        parent.classList.remove('parent')
+        var childElement = parent.nextSibling
+        childElement.parentElement.removeChild(childElement)
+        parent.classList.remove("parent")
+        return;
 
     } else {
         parent.classList.add('parent')
@@ -164,10 +166,9 @@ function moreInfo (e) {
     var divmore = document.createElement("tr")
     divmore.setAttribute('class', 'child')
     parent.after(divmore)
+    
 
-    document.addEventListener("updated", (e)=>{
-        console.log(e)
-    })
+    console.log()
 
     addMoreInfoHtml(moreinfo, infohead, divmore)
 }
