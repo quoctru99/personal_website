@@ -3,9 +3,6 @@ import React from 'react';
 
 
 export default class GitHub extends React.Component{
-
-    body
-
     constructor(props) {
         super(props)
         this.state = {
@@ -62,8 +59,18 @@ export default class GitHub extends React.Component{
         )
     }
 
-    moreInfo(e) {
+    moreInfo(e, renderCondition) {
+
+        var button
+        if(!e.tagName) {
+            button = e.target
+        } else {
+            button = e
+
+
+        }
         
+
         var more = []
         var head = []
         document.querySelectorAll("#git-table > thead > tr > th")
@@ -73,22 +80,24 @@ export default class GitHub extends React.Component{
                     head.push(td)
                 }
             })
-        console.log("log", head)
-        this.setState({
-            infohead: head
-        })
-        console.log(this.state.moreinfo)
-        var parent = e.target.parentNode.parentNode
+        var parent = button.parentNode.parentNode
         
-        if(parent.classList.contains('parent')) {
+        if(parent.classList.contains('parent') && !renderCondition) {
 
+            button.classList.remove("expanded")
             var childElement = parent.nextSibling
             childElement.parentElement.removeChild(childElement)
             parent.classList.remove("parent")
             return;
 
         } else {
+
+            if(renderCondition) {
+                var childElement = parent.nextSibling
+                childElement.remove()
+            }
             
+            button.classList.add("expanded")
             parent.classList.add('parent')
             parent.querySelectorAll("td")
             .forEach((td) => {
@@ -97,11 +106,6 @@ export default class GitHub extends React.Component{
                     more.push(td)
                 }
             })
-            console.log("log", more)
-            this.setState(() => {
-                return {moreinfo: more}
-            })
-            console.log(this.state.infohead)
         }
 
         var divmore = document.createElement("tr")
@@ -109,24 +113,24 @@ export default class GitHub extends React.Component{
         parent.after(divmore)
 
         //render funciton
-        if(this.state.moreinfo.length > 0) {
-            var data = this.state.moreinfo.map((item,i) => (       
-                <li data={i} key={i}>
-                    <span className="title">{this.state.infohead[i].innerText} </span>
-                    <span className="Data">{item.innerText}</span>
-                </li>
-            ))
         
-            
+        var data = more.map((item,i) => (       
+            <li data={i} key={i}>
+                <span className="title">{head[i].innerText} </span>
+                <span className="Data">{item.innerText}</span>
+            </li>
+        ))
+    
         
-            ReactDOM.render(
-            <td colSpan={5-this.state.moreinfo.length} className="moreinfo" >
-                <ul>
-                    {data}
-                </ul>
-            </td>
-            , divmore)
-        }
+    
+        ReactDOM.render(
+        <td colSpan={5-more.length} className="moreinfo" >
+            <ul>
+                {data}
+            </ul>
+        </td>
+        , divmore)
+        
     }
     
     componentDidMount() {
@@ -136,11 +140,19 @@ export default class GitHub extends React.Component{
     
             if(x.matches) {
                 document.querySelectorAll(".expandButton").forEach(x => {
+                    if(x.classList.contains("expanded")) {
+                        console.log(x)
+                        this.moreInfo(x, true)
+                    }
                     x.style.display = "inline-block"
                 })
     
             } else {
                 document.querySelectorAll(".expandButton").forEach(x => {
+                    if(x.classList.contains("expanded")) {
+                        console.log(x)
+                        this.moreInfo(x, true)
+                    }
                     x.style.display = "none"
                 })
             }
@@ -203,17 +215,6 @@ export default class GitHub extends React.Component{
             })
         }
     }
-
-}
-
-
-
-
-
-
-function addMoreInfoHtml(moreinfo, infohead, divmore) {
-
-    
 
 }
 
