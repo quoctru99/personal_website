@@ -107,7 +107,7 @@ export default class GitHub extends React.Component{
                 }
             })
         }
-
+        
         var divmore = document.createElement("tr")
         divmore.setAttribute('class', 'child')
         parent.after(divmore)
@@ -140,25 +140,21 @@ export default class GitHub extends React.Component{
     
             if(x.matches) {
                 document.querySelectorAll(".expandButton").forEach(x => {
-                    if(x.classList.contains("expanded")) {
-                        console.log(x)
-                        this.moreInfo(x, true)
-                    }
                     x.style.display = "inline-block"
                 })
     
             } else {
                 document.querySelectorAll(".expandButton").forEach(x => {
-                    if(x.classList.contains("expanded")) {
-                        console.log(x)
-                        this.moreInfo(x, true)
-                    }
                     x.style.display = "none"
                 })
             }
     
             stretch(x,5)
-    
+            document.querySelectorAll(".expandButton").forEach(x => {
+                if(x.classList.contains("expanded")) {
+                    this.moreInfo(x, true)
+                }
+            }) 
     
         })
         stretch(updated,5)
@@ -171,7 +167,11 @@ export default class GitHub extends React.Component{
         var star = window.matchMedia("(max-width: 918px)")
         star.addListener((x) => {
             stretch(x,4)
-    
+            document.querySelectorAll(".expandButton").forEach(x => {
+                if(x.classList.contains("expanded")) {
+                    this.moreInfo(x, true)
+                }
+            }) 
             
         })
         stretch(star,4)
@@ -190,6 +190,11 @@ export default class GitHub extends React.Component{
                     x.style.display = "inline-block"
                 })
             }
+            document.querySelectorAll(".expandButton").forEach(x => {
+                if(x.classList.contains("expanded")) {
+                    this.moreInfo(x, true)
+                }
+            }) 
         })
         stretch(Language,3)
         if(Language.matches) {
@@ -207,6 +212,11 @@ export default class GitHub extends React.Component{
                     x.style.display = "inline-block"
                 })
             }
+            document.querySelectorAll(".expandButton").forEach(x => {
+                if(x.classList.contains("expanded")) {
+                    this.moreInfo(x, true)
+                }
+            }) 
         })
         stretch(repo,2)
         if(repo.matches) {
