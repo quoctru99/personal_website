@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Typography from '@material-ui/core/Typography'
-import GitHub from './table'
+import GitHub from './homeParts/Github'
+import Footer from './homeParts/Footer';
 import '../styles/home.sass'
 
 
@@ -27,7 +28,7 @@ export default class Home extends Component {
 
     render () {
         return (
-            <div>
+            <>
                 <div className="mainground">
                     <div id="intro">
                         <Typography aling='center' className="intro-text" variant="h3" >
@@ -46,8 +47,11 @@ export default class Home extends Component {
                     </div>
                 </div>
                 <GitHub data={this.test}/>
-                <Resume/>
-            </div>
+                {/* <Resume/> */}
+                <br/>
+                <br/>
+                <Footer/>
+            </>
         );
     }
 }

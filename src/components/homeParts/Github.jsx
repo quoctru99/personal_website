@@ -73,6 +73,7 @@ export default class GitHub extends React.Component{
 
         var more = []
         var head = []
+        var childElement
         document.querySelectorAll("#git-table > thead > tr > th")
             .forEach((td) => {
                 if (td.style.display === "none") 
@@ -85,7 +86,7 @@ export default class GitHub extends React.Component{
         if(parent.classList.contains('parent') && !renderCondition) {
 
             button.classList.remove("expanded")
-            var childElement = parent.nextSibling
+            childElement = parent.nextSibling
             childElement.parentElement.removeChild(childElement)
             parent.classList.remove("parent")
             return;
@@ -93,7 +94,7 @@ export default class GitHub extends React.Component{
         } else {
 
             if(renderCondition) {
-                var childElement = parent.nextSibling
+                childElement = parent.nextSibling
                 childElement.remove()
             }
             
