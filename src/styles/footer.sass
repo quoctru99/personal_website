@@ -3,6 +3,10 @@
     height: 110px
 
     .icon 
+        position: relative
+        left: 50%
+        top: 50%
+        transform: translate(-50%,-50%)
         
         div
             height: 38px
@@ -12,13 +16,18 @@
             background: white
             display: inline-block
 
+            
 
-        h1
-            text-align: center
-            line-height: 110px
-            color: white
-            font-family: 'Courier New',Courier, monospace
-            margin-top: 0px
+        .referIcon
+            padding: 5px
+
+
+        .referIcon > img
+            width: 32px
+            height: 32px
+            background: white
+            padding: 5px
+            border-radius: 100%
 
 .location
     margin: 0px
