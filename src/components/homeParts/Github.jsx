@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
-
+import '../../styles/homePartsCss/github.sass'
 
 export default class GitHub extends React.Component{
     constructor(props) {
@@ -40,22 +40,26 @@ export default class GitHub extends React.Component{
         this.s()
 
         return (
-            <div className="wrapper-table">
-                <table id="git-table">
-                    <thead>
-                        <tr className="unique">
-                            <th>#</th>
-                            <th>Repo Name</th>
-                            <th>Language</th>
-                            <th>Stars</th>
-                            <th>Updated</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.body}
-                    </tbody>
-                </table>
-            </div>
+            <>
+                
+                <div className="wrapper-table">
+                    <h1 id="body-title">My Github Repo</h1>
+                    <table id="git-table">
+                        <thead>
+                            <tr className="unique">
+                                <th>#</th>
+                                <th>Repo Name</th>
+                                <th>Language</th>
+                                <th>Stars</th>
+                                <th>Updated</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.body}
+                        </tbody>
+                    </table>
+                </div>
+            </>
         )
     }
 

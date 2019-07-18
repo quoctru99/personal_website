@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Form from './components/form.jsx';
-import Home from './components/home.jsx';
-import Navbar from './components/navbar';
+import Form from './components/Form.jsx';
+import Home from './components/Home.jsx';
+import Navbar from './components/Navbar';
 import {
     BrowserRouter as Router, 
     Route,
