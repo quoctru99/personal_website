@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Typography from '@material-ui/core/Typography'
 import GitHub from './homeParts/Github'
 import Footer from './homeParts/Footer';
+import ExtraInfo from './homeParts/ExtraInfo';
 import '../styles/home.sass'
 
 
@@ -31,12 +32,11 @@ export default class Home extends Component {
             <>
                 <div className="mainground">
                     <div id="intro">
-                        <Typography aling='center' className="intro-text" variant="h3" >
+                        <Typography align='center' className="intro-text author" variant="h5" >
                             Tru Nguyen
                         </Typography>
-                        <Typography aling='center' className="intro-text" variant="h5">
-                            A CS student who always try to get better everyday.<br/> Who is 
-                            eager to learn new thing.
+                        <Typography align='center' className="intro-text" variant="p">
+                        Diligent and inquisitive personality, currently study in Northeastern Illinois University as a Junior and major in Computer Science and Mathematics.
                         </Typography>
                     </div>
                     <div className="expand">
@@ -46,8 +46,8 @@ export default class Home extends Component {
                         <i className="material-icons ic">expand_more</i>
                     </div>
                 </div>
+                <ExtraInfo/>
                 <GitHub data={this.test}/>
-                {/* <Resume/> */}
                 <br/>
                 <br/>
                 <Footer/>
