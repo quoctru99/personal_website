@@ -32,12 +32,16 @@ export default class Home extends Component {
             <>
                 <div className="mainground">
                     <div id="intro">
-                        <Typography align='center' className="intro-text author" variant="h5" >
+                        <Typography align='center' className="intro-text author" variant="headline" >
                             Tru Nguyen
                         </Typography>
-                        <Typography align='center' className="intro-text" variant="p">
+                        <Typography align='center' className="intro-text" variant="subheading">
                         Diligent and inquisitive personality, currently study in Northeastern Illinois University as a Junior and major in Computer Science and Mathematics.
                         </Typography>
+                        <div className="introButton">
+                            <button> <span>READ MORE</span> </button>
+                            <button> <span>CONTACT</span> </button>
+                        </div>
                     </div>
                     <div className="expand">
                         <Typography aling='center' className="intro-text" variant="h5">
@@ -56,36 +60,36 @@ export default class Home extends Component {
     }
 }
 
-function Resume (props) {
+// function Resume (props) {
 
-    return (
-        <div className="resume"> 
-            <h1> My Resume </h1>
-            <div id="resumeform">
-                <header>
-                    <h2 className="head-res">Tru Nguyen</h2>
-                    <h4 className="head-res">Computer Science student</h4>
-                    <br/>
-                    <p>Phone: 312-208-1234</p>
-                    <p>Email: tqnguy40@neiu.edu</p>
-                    <p>GitHub: <a href="https://github.com/quoctru99" target="_blank" rel="noopener noreferrer"> https://github.com/quoctru99 </a></p>
-                </header>
-                    <hr/>
-                <section>
-                    <h1>Education : </h1>
-                        <p>School: Northeastern Illinois University</p>
-                        <p>Major: Computer Science</p>
-                        <p>GPA: 3.55</p>
-                    <h1>Briefly about skills : </h1>
-                        <p>Java, Python, Nodejs, PHP</p>
-                    <h1>Experience : </h1>
-                        <p>Full Stack Developer – websites (ctvface.com)</p>
-                        <p>Internship at Hu-Friedy</p>
-                </section>
-            </div>
-        </div>
-    )
-}
+//     return (
+//         <div className="resume"> 
+//             <h1> My Resume </h1>
+//             <div id="resumeform">
+//                 <header>
+//                     <h2 className="head-res">Tru Nguyen</h2>
+//                     <h4 className="head-res">Computer Science student</h4>
+//                     <br/>
+//                     <p>Phone: 312-208-1234</p>
+//                     <p>Email: tqnguy40@neiu.edu</p>
+//                     <p>GitHub: <a href="https://github.com/quoctru99" target="_blank" rel="noopener noreferrer"> https://github.com/quoctru99 </a></p>
+//                 </header>
+//                     <hr/>
+//                 <section>
+//                     <h1>Education : </h1>
+//                         <p>School: Northeastern Illinois University</p>
+//                         <p>Major: Computer Science</p>
+//                         <p>GPA: 3.55</p>
+//                     <h1>Briefly about skills : </h1>
+//                         <p>Java, Python, Nodejs, PHP</p>
+//                     <h1>Experience : </h1>
+//                         <p>Full Stack Developer – websites (ctvface.com)</p>
+//                         <p>Internship at Hu-Friedy</p>
+//                 </section>
+//             </div>
+//         </div>
+//     )
+// }
 
 
 
