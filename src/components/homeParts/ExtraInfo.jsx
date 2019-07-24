@@ -5,7 +5,7 @@ export default class ExtraInfo extends Component {
     
     render() {
         return (
-            <div className="information">
+            <div className="information" id="infoSection">
                 <div className="container">
                     <h2 className="txt-white txt-center">COOL PROJECT ?</h2>
                     <p className="txt-white txt-center">These are projects which i develope, and i find it amusing and educational. through the process of creating it, i gained more skills that enable

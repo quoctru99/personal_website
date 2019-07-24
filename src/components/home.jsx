@@ -39,7 +39,7 @@ export default class Home extends Component {
                         Diligent and inquisitive personality, currently study in Northeastern Illinois University as a Junior and major in Computer Science and Mathematics.
                         </Typography>
                         <div className="introButton">
-                            <button> <span>READ MORE</span> </button>
+                            <button onClick={(e) => this.smoothScroll(e, "#infoSection")}> <span>READ MORE</span> </button>
                             <button> <span>CONTACT</span> </button>
                         </div>
                     </div>
@@ -57,6 +57,32 @@ export default class Home extends Component {
                 <Footer/>
             </>
         );
+    }
+
+    smoothScroll(e, id) {
+        var ePosition = document.querySelector(id).offsetTop
+        var navBarHeight = document.getElementById("navbar").offsetHeight
+        window.scrollTo(0,ePosition-navBarHeight)
+        
+        this.scrollBy(ePosition-navBarHeight, 200)
+
+    }
+    scrollBy(distance, duration) {
+
+        var initialY = document.body.scrollTop;
+        var y = initialY + distance;
+        var baseY = (initialY + y) * 0.5;
+        var difference = initialY - baseY;
+        var startTime = performance.now();
+    
+        function step() {
+            var normalizedTime = (performance.now() - startTime) / duration;
+            if (normalizedTime > 1) normalizedTime = 1;
+    
+            window.scrollTo(0, baseY + difference * Math.cos(normalizedTime * Math.PI));
+            if (normalizedTime < 1) window.requestAnimationFrame(step);
+        }
+        window.requestAnimationFrame(step);
     }
 }
 
