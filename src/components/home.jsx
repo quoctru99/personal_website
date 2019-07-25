@@ -62,10 +62,8 @@ export default class Home extends Component {
     smoothScroll(e, id) {
         var ePosition = document.querySelector(id).offsetTop
         var navBarHeight = document.getElementById("navbar").offsetHeight
-        window.scrollTo(0,ePosition-navBarHeight)
-        
-        this.scrollBy(ePosition-navBarHeight, 200)
 
+        this.scrollBy(ePosition-navBarHeight, 200)
     }
     scrollBy(distance, duration) {
 
