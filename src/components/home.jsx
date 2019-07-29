@@ -3,6 +3,7 @@ import Typography from '@material-ui/core/Typography'
 import GitHub from './homeParts/Github'
 import Footer from './homeParts/Footer';
 import ExtraInfo from './homeParts/ExtraInfo';
+import Recuit from './homeParts/Recuiter';
 import '../styles/home.sass'
 
 
@@ -52,8 +53,7 @@ export default class Home extends Component {
                 </div>
                 <ExtraInfo/>
                 <GitHub data={this.test}/>
-                <br/>
-                <br/>
+                <Recuit />
                 <Footer/>
             </>
         );
@@ -83,37 +83,6 @@ export default class Home extends Component {
         window.requestAnimationFrame(step);
     }
 }
-
-// function Resume (props) {
-
-//     return (
-//         <div className="resume"> 
-//             <h1> My Resume </h1>
-//             <div id="resumeform">
-//                 <header>
-//                     <h2 className="head-res">Tru Nguyen</h2>
-//                     <h4 className="head-res">Computer Science student</h4>
-//                     <br/>
-//                     <p>Phone: 312-208-1234</p>
-//                     <p>Email: tqnguy40@neiu.edu</p>
-//                     <p>GitHub: <a href="https://github.com/quoctru99" target="_blank" rel="noopener noreferrer"> https://github.com/quoctru99 </a></p>
-//                 </header>
-//                     <hr/>
-//                 <section>
-//                     <h1>Education : </h1>
-//                         <p>School: Northeastern Illinois University</p>
-//                         <p>Major: Computer Science</p>
-//                         <p>GPA: 3.55</p>
-//                     <h1>Briefly about skills : </h1>
-//                         <p>Java, Python, Nodejs, PHP</p>
-//                     <h1>Experience : </h1>
-//                         <p>Full Stack Developer – websites (ctvface.com)</p>
-//                         <p>Internship at Hu-Friedy</p>
-//                 </section>
-//             </div>
-//         </div>
-//     )
-// }
 
 
 

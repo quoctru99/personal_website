@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Form from './components/Form.jsx';
 import Home from './components/Home.jsx';
 import Navbar from './components/Navbar';
+import Contact from './components/Contact';
 import {
     BrowserRouter as Router, 
     Route,
@@ -20,6 +21,7 @@ class App extends React.Component {
                     <Navbar home="Home" login="login" github="Github" contact="Contact"/>
                     <Route exact path="/" component={Home} />
                     <Route path="/login" component={Form} />
+                    <Route path="/contact" component={Contact} />
                 </div>
             </Router>
         </div>

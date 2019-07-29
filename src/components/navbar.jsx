@@ -3,7 +3,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import React, { Component } from 'react';
-
 import '../styles/navbar.sass'
 
 import {
@@ -32,6 +31,13 @@ class Navbar extends Component {
     }
 
     render () {
+        window.addEventListener('scroll', function() {
+            if(window.pageYOffset > 0) {
+              document.getElementById("appbar").style.background = "white"
+            } else {
+                document.getElementById("appbar").style.background = "transparent"
+            }
+        });
         return (
             <div id="navbar">
             <AppBar id="appbar" position="static" style={styles.abar}>

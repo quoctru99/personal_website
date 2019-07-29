@@ -12,16 +12,6 @@ export default class GitHub extends React.Component{
     }
 
     s() {
-        window.addEventListener('scroll', function() {
-            // eslint-disable-next-line no-restricted-globals
-            if(pageYOffset > 0) {
-              document.getElementById("appbar").style.background = "white"
-            } else {
-                document.getElementById("appbar").style.background = "transparent"
-            }
-        });
-        
-    
         const data = this.props.data
         this.body = data.map( (obj,i) => (
             <tr key={i} data={i} className="unique">
