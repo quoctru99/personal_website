@@ -18,7 +18,7 @@ export default class Footer extends React.Component {
                     </div>
                 </div>
                 <div className="location">
-                    <p className="address">459 BROADWAY, NEW YORK(212) 555-0123NGUYENQUOC@YAHOO.com</p>
+                    <p className="address">CHICAGO IL, 60630. (312)-208-2090. NGUYENQUOCTRU99@GMAIL.COM</p>
                 </div>
             </>
         )

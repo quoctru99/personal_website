@@ -67,13 +67,13 @@ function Navigation (props)
                   </Button>
                 </Link>
 
-                <Link className="link" to="/login">
+                {/* <Link className="link" to="/login">
                   <Button color="inherit">
                     <Typography className="link" variant="button" color="primary">
                       {global_props.login}
                     </Typography>
                   </Button>
-                </Link>
+                </Link> */}
 
                 <Link className="link" to="/github">
                   <Button color="inherit">

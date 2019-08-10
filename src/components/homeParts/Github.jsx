@@ -16,10 +16,10 @@ export default class GitHub extends React.Component{
         this.body = data.map( (obj,i) => (
             <tr key={i} data={i} className="unique">
                 <td>{i=i+1} <button onClick={this.moreInfo.bind(this)} className="expandButton"> </button></td>
-                <td>{obj.Repo}</td>
-                <td>{obj.Language}</td>
-                <td>{obj.Stars}</td>
-                <td>{obj.Updated}</td>
+                <td>{obj.repo}</td>
+                <td>{obj.language}</td>
+                <td>{obj.star}</td>
+                <td>{obj.updated}</td>
             </tr>
             )
         )
@@ -34,20 +34,37 @@ export default class GitHub extends React.Component{
                 
                 <div className="wrapper-table">
                     <h1 id="body-title">My Github Repo</h1>
-                    <table id="git-table">
-                        <thead>
-                            <tr className="unique">
-                                <th>#</th>
-                                <th>Repo Name</th>
-                                <th>Language</th>
-                                <th>Stars</th>
-                                <th>Updated</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {this.body}
-                        </tbody>
-                    </table>
+                    
+                    <div className="full-table">
+                        <div className="custom_page">
+                            <select name="per_page" id="per_page">
+                                <option value="5">5 PER_PAGE</option>
+                                <option value="10">10 PER_PAGE</option>
+                                <option value="15">15 PER_PAGE</option>
+                            </select>
+                        </div>
+                        <table id="git-table">
+                            <thead>
+                                <tr className="unique">
+                                    <th>#</th>
+                                    <th>Repo Name</th>
+                                    <th>Language</th>
+                                    <th>Stars</th>
+                                    <th>Updated</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {this.body}
+                            </tbody>
+                        </table>
+
+                        <ul className="pagination" id="pagination">
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="pagination">
+
                 </div>
             </>
         )
@@ -115,9 +132,7 @@ export default class GitHub extends React.Component{
                 <span className="Data">{item.innerText}</span>
             </li>
         ))
-    
-        
-    
+
         ReactDOM.render(
         <td colSpan={5-more.length} className="moreinfo" >
             <ul>

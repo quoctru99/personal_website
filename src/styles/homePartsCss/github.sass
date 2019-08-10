@@ -1,18 +1,43 @@
 //table part
 #body-title
     font-family: 'Permanent Marker', cursive
-    font-weight: 400
-
-.wrapper-table
-    display: flex
-    flex-direction: column
-    align-items: center
-    justify-content: center
+    font-weight: 400 
+    text-align: center
    
+.full-table
+    flex-direction: column
+    width: 30%
+    margin: auto
+
+    #per_page
+        font-family: lato
+        font-size: 15px
+        padding: 5px
+        margin-bottom: 10px
+        
+    .pagination
+        list-style-type: none
+        padding: 0px
+        margin: 0px
+        
+        li  
+            float: right
+            cursor: pointer
+            display: inline-block
+            padding: 5px
+            border: 1px solid black
+            border-radius: 5px
+            margin: 10px 3px 0px 0px
+        
+    .pagination::after
+        content: ""
+        clear: both
+        display: table
+
 
 #git-table
     border-collapse: collapse
-    width: 30%
+   
     thead > tr > th
         padding: 15px
         border: 1px solid #E0E0E0
