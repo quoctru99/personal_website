@@ -4,10 +4,9 @@
     font-weight: 400 
     text-align: center
    
-.full-table
-    flex-direction: column
-    width: 30%
-    margin: auto
+.full-table 
+    overflow: auto
+
 
     #per_page
         font-family: lato
@@ -21,14 +20,24 @@
         margin: 0px
         
         li  
-            float: right
             cursor: pointer
             display: inline-block
-            padding: 5px
+            padding: 6px 12px 6px 12px
             border: 1px solid black
             border-radius: 5px
             margin: 10px 3px 0px 0px
+        #arrow
+            width: 34px
+            height: 32px
+            padding: 6px
+            border: none
+            img
+                vertical-align: middle
         
+        .arrow-right
+            transform: rotate(180deg)
+
+
     .pagination::after
         content: ""
         clear: both
@@ -37,8 +46,11 @@
 
 #git-table
     border-collapse: collapse
+    table-layout: fixed
+    width: 50%
    
     thead > tr > th
+        white-space: pre-wrap
         padding: 15px
         border: 1px solid #E0E0E0
         text-align: left
@@ -46,6 +58,9 @@
         font-size: 15px
         
     tbody > tr > td
+        text-overflow: ellipsis
+        overflow: hidden
+        white-space: pre-wrap
         padding: 15px
         border: 1px solid #E0E0E0
         font-family: 'Source Sans Pro', sans-serif

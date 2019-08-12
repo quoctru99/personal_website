@@ -1,21 +1,37 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
+import arrow from '../../svg/arrow.svg'
 import '../../styles/homePartsCss/github.sass'
 
 export default class GitHub extends React.Component{
     constructor(props) {
         super(props)
         this.state = {
-            moreinfo: [],
-            infohead: []
+            gitTable: [],
+            numPage: 0,
+            currPage: 0,
+            per_page: 0,
         }
     }
 
     s() {
-        const data = this.props.data
+        const data = this.state.gitTable
+        const numPage = this.state.numPage
+        const currPage = this.state.currPage
+        const per_page = this.state.per_page
+
+        this.foot = () => {
+            var e = []
+            for (let i = 1;i<=numPage;i++) {
+                e.push(<li key={i} onClick={this.changePage.bind(this, i)} >{i}</li>)
+            }
+
+            return (e)
+        }
+
         this.body = data.map( (obj,i) => (
             <tr key={i} data={i} className="unique">
-                <td>{i=i+1} <button onClick={this.moreInfo.bind(this)} className="expandButton"> </button></td>
+                <td>{i=(i+1)+(currPage-1)*per_page} <button onClick={this.moreInfo.bind(this)} className="expandButton"> </button></td>
                 <td>{obj.repo}</td>
                 <td>{obj.language}</td>
                 <td>{obj.star}</td>
@@ -33,18 +49,25 @@ export default class GitHub extends React.Component{
             <>
                 
                 <div className="wrapper-table">
-                    <h1 id="body-title">My Github Repo</h1>
+                    <h1 id="body-title" className="titleres">My Github Repo</h1>
                     
                     <div className="full-table">
-                        <div className="custom_page">
-                            <select name="per_page" id="per_page">
-                                <option value="5">5 PER_PAGE</option>
-                                <option value="10">10 PER_PAGE</option>
-                                <option value="15">15 PER_PAGE</option>
-                            </select>
-                        </div>
-                        <table id="git-table">
+                        
+                        <table id="git-table" align="center">
+                            
                             <thead>
+                                <td colSpan="5">
+                                    
+                                    <div className="custom_page">
+                                        <select name="per_page" id="per_page">
+                                            <option value="5">5 PER_PAGE</option>
+                                            <option value="10">10 PER_PAGE</option>
+                                            <option value="15">15 PER_PAGE</option>
+                                        </select>
+                                    </div>
+                                    
+                                </td>
+
                                 <tr className="unique">
                                     <th>#</th>
                                     <th>Repo Name</th>
@@ -56,10 +79,19 @@ export default class GitHub extends React.Component{
                             <tbody>
                                 {this.body}
                             </tbody>
+
+                            <tfoot align="right">
+                                <td colSpan="5">
+                                    <ul className="pagination" id="pagination">
+                                        <li id="arrow"><img src={arrow} alt="" /></li>
+                                        {this.foot()}
+                                        <li id="arrow" className="arrow-right"><img src={arrow} alt="" /></li>
+                                    </ul>
+                                </td>
+                            </tfoot>
                         </table>
 
-                        <ul className="pagination" id="pagination">
-                        </ul>
+                        
                     </div>
                 </div>
 
@@ -68,6 +100,54 @@ export default class GitHub extends React.Component{
                 </div>
             </>
         )
+    }
+
+    async componentDidMount () {
+        var per_page = document.getElementById("per_page")
+        var val = per_page.options[per_page.selectedIndex].value
+        this.getRepo(1,val)
+        await this.getUser(val)
+        
+
+        per_page.addEventListener('change', async () => {
+            val = per_page.options[per_page.selectedIndex].value
+            await this.getUser(val)
+            this.getRepo(1,val)
+        })
+    }
+
+    changePage(e, i) {
+        var per_page = document.getElementById("per_page")
+        var val = per_page.options[per_page.selectedIndex].value
+        
+        this.getRepo(e+"",val)
+    }
+
+    async getUser(per_page) {
+        return await fetch(`http://localhost:8080/api/tru`)
+            .then((res) => {
+                return res.json()
+            })
+            .then((json) => {
+                this.setState({
+                    numPage: Math.ceil(json.total/per_page),
+                    per_page: per_page
+                })
+            })
+    }
+    getRepo(page, per_page) {
+
+        fetch(`http://localhost:8080/api/repo/tru?page=${page}&per_page=${per_page}`)
+            .then((reponse) => {
+                return reponse.json();
+            })
+            .then((json) => {
+                this.setState({
+                    gitTable: json,
+                    currPage: page,
+                    per_page: per_page
+                })
+            })
     }
 
     moreInfo(e, renderCondition) {
@@ -143,111 +223,4 @@ export default class GitHub extends React.Component{
         
     }
     
-    componentDidMount() {
-        var updated = window.matchMedia("(max-width: 1138px)")
-    
-        updated.addListener((x) => {
-    
-            if(x.matches) {
-                document.querySelectorAll(".expandButton").forEach(x => {
-                    x.style.display = "inline-block"
-                })
-    
-            } else {
-                document.querySelectorAll(".expandButton").forEach(x => {
-                    x.style.display = "none"
-                })
-            }
-    
-            stretch(x,5)
-            document.querySelectorAll(".expandButton").forEach(x => {
-                if(x.classList.contains("expanded")) {
-                    this.moreInfo(x, true)
-                }
-            }) 
-    
-        })
-        stretch(updated,5)
-        if(updated.matches) {
-            document.querySelectorAll(".expandButton").forEach(x => {
-                x.style.display = "inline-block"
-            })
-        }
-        
-        var star = window.matchMedia("(max-width: 918px)")
-        star.addListener((x) => {
-            stretch(x,4)
-            document.querySelectorAll(".expandButton").forEach(x => {
-                if(x.classList.contains("expanded")) {
-                    this.moreInfo(x, true)
-                }
-            }) 
-            
-        })
-        stretch(star,4)
-        if(star.matches) {
-            document.querySelectorAll(".expandButton").forEach(x => {
-                x.style.display = "inline-block"
-            })
-        }
-    
-        var Language = window.matchMedia("(max-width: 757px) ")
-        Language.addListener((x) => {
-            stretch(x,3)
-    
-            if(x.matches) {
-                document.querySelectorAll(".expandButton").forEach(x => {
-                    x.style.display = "inline-block"
-                })
-            }
-            document.querySelectorAll(".expandButton").forEach(x => {
-                if(x.classList.contains("expanded")) {
-                    this.moreInfo(x, true)
-                }
-            }) 
-        })
-        stretch(Language,3)
-        if(Language.matches) {
-            document.querySelectorAll(".expandButton").forEach(x => {
-                x.style.display = "inline-block"
-            })
-        }
-    
-        var repo = window.matchMedia("(max-width: 495px)")
-        repo.addListener((x) => {
-            stretch(x,2)
-    
-            if(x.matches) {
-                document.querySelectorAll(".expandButton").forEach(x => {
-                    x.style.display = "inline-block"
-                })
-            }
-            document.querySelectorAll(".expandButton").forEach(x => {
-                if(x.classList.contains("expanded")) {
-                    this.moreInfo(x, true)
-                }
-            }) 
-        })
-        stretch(repo,2)
-        if(repo.matches) {
-            document.querySelectorAll(".expandButton").forEach(x => {
-                x.style.display = "inline-block"
-            })
-        }
-    }
-
-}
-
-function stretch(z,id) {
-    if (z.matches) {
-        document.querySelector(`thead th:nth-child(${id})`).style.display = "none"
-        document.querySelectorAll(`#git-table > tbody > tr.unique`).forEach((e) => {
-            e.querySelector(`td:nth-child(${id})`).style.display = "none"
-        })
-    } else {
-        document.querySelector(`thead th:nth-child(${id})`).style.display = "table-cell"
-        document.querySelectorAll(`#git-table > tbody > tr.unique`).forEach((e) => {
-            e.querySelector(`td:nth-child(${id})`).style.display = "table-cell"
-        })
-    }
 }

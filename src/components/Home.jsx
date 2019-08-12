@@ -11,13 +11,6 @@ import '../styles/home.sass'
 
 export default class Home extends Component {
 
-    constructor (props) {
-        super(props)
-        this.state = {
-           gitTable: []
-        }
-    }
-
     render () {
         return (
             <>
@@ -38,50 +31,15 @@ export default class Home extends Component {
                         <Typography aling='center' className="intro-text" variant="h5">
                             Learn more about me
                         </Typography>
-                        <i className="material-icons ic">expand_more</i>
+                        <i className="material-icons ic" onClick={(e) => this.smoothScroll(e, "#infoSection")}>expand_more</i>
                     </div>
                 </div>
                 <ExtraInfo/>
-                <GitHub data={this.state.gitTable}/>
+                <GitHub/>
                 <Recuit />
                 <Footer/>
             </>
         );
-    }
-
-    async componentDidMount () {
-        var per_page = document.getElementById("per_page")
-        var val = per_page.options[per_page.selectedIndex].value
-        this.getRepo(1,val)
-        var numPage = await this.getUser(val)
-        
-
-        per_page.addEventListener('change', async () => {
-            val = per_page.options[per_page.selectedIndex].value
-            numPage = await this.getUser(val)
-            this.getRepo(1,val)
-
-            var pagination = document.getElementById("pagination")
-            // if(pagination.hasChildNodes()) {
-            //     pagination.removeChild()
-            // }
-
-            for(var i=numPage;i>0;i--) {
-                var pagy = document.createElement("li")
-                pagy.innerText = i
-                pagination.appendChild(pagy)
-            }
-        })
-
-        // var pagination = document.getElementById("pagination")
-        // pagination.removeChild();
-
-        // for(var i=1;i<=this.state.numPage;i++) {
-        //     var pagy = document.createElement("li")
-        //     pagy.innerText = i
-        //     pagination.appendChild(pagy)
-        // }
-        
     }
 
     smoothScroll(e, id) {
@@ -107,27 +65,7 @@ export default class Home extends Component {
         }
         window.requestAnimationFrame(step);
     }
-    async getUser(per_page) {
-        return await fetch(`http://localhost:8080/api/tru`)
-            .then((res) => {
-                return res.json()
-            })
-            .then((json) => {
-                return Math.ceil(json.total/per_page)
-            })
-    }
-    getRepo(page, per_page) {
-
-        fetch(`http://localhost:8080/api/repo/tru?page=${page}&per_page=${per_page}`)
-            .then((reponse) => {
-                return reponse.json();
-            })
-            .then((json) => {
-                this.setState({
-                    gitTable: json
-                })
-            })
-    }
+    
 }
 
 
