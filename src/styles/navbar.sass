@@ -13,3 +13,27 @@
     #appbar
         background-color: transparent
         transition: background-color .5s 
+
+@media screen and (max-width: 410px)
+    #nav-select .link
+        display: none
+    #menu
+        cursor: pointer
+        display: block !important
+        width: 30px
+        height: 30px
+    
+.sideNav
+    height: 100%
+    width: 70%
+    position: fixed
+    z-index: 1
+    top: 0
+    left: 0
+    background-color: #7f8fa6
+    overflow-x: hidden
+    padding-top: 60px
+    transition: 0.5s
+
+    .sideLink
+        display: block
