@@ -19,11 +19,10 @@ export default class Navigation extends Component {
         return (
             <div id="nav-select">
                 <img id="menu" src={menuIcon} alt=""  style={{display: "none"}} onClick={this.showMenu.bind(this)}/>
-                
-                    <div className="sideNav" {this.state.clicked}>
-                        <Link className="sideLink" to="/">Home</Link>
-                        <Link className="sideLink" to="/github">Github</Link>
-                        <Link className="sideLink" to="/contact">Contact</Link>
+                    <div className="sideNav" style={{width: `${this.state.clicked ? "100%" : "0%"}`}}>
+                        <Link className="sideLink" to="/" onClick={this.showMenu.bind(this)}>Home</Link>
+                        <Link className="sideLink" to="/github" onClick={this.showMenu.bind(this)}>Github</Link>
+                        <Link className="sideLink" to="/contact" onClick={this.showMenu.bind(this)}>Contact</Link>
                     </div>
                 
                 <Link className="link" to="/">

@@ -2,6 +2,7 @@ import ReactDOM from 'react-dom';
 import React from 'react';
 import arrow from '../../svg/arrow.svg'
 import '../../styles/homePartsCss/github.sass'
+import moment from 'moment';
 
 export default class GitHub extends React.Component{
     constructor(props) {
@@ -15,11 +16,12 @@ export default class GitHub extends React.Component{
     }
 
     s() {
+        
         const data = this.state.gitTable
         const numPage = this.state.numPage
         const currPage = this.state.currPage
         const per_page = this.state.per_page
-
+        console.log()
         this.foot = () => {
             var e = []
             for (let i = 1;i<=numPage;i++) {
@@ -35,7 +37,7 @@ export default class GitHub extends React.Component{
                 <td>{obj.repo}</td>
                 <td>{obj.language}</td>
                 <td>{obj.star}</td>
-                <td>{obj.updated}</td>
+                <td>{moment(obj.updated,"YYYY-MM-DD HH:mm::ss Z").calendar()}</td>
             </tr>
             )
         )
