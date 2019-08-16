@@ -6,8 +6,6 @@
    
 .full-table 
     overflow: auto
-
-
     #per_page
         font-family: lato
         font-size: 15px
@@ -45,8 +43,8 @@
 
 
 #git-table
+
     border-collapse: collapse
-    table-layout: fixed
     width: 50%
    
     thead > tr > th
@@ -56,10 +54,28 @@
         text-align: left
         font-family: lato
         font-size: 15px
+    
+    // tbody > tr > td:first-child:before
+    //     top: 15px
+    //     left: 5px
+    //     height: 14px
+    //     width: 14px
+    //     display: block
+    //     position: absolute
+    //     color: white
+    //     border: 2px solid white
+    //     border-radius: 14px
+    //     box-shadow: 0 0 3px #444
+    //     box-sizing: content-box
+    //     text-align: center
+    //     text-indent: 0 !important
+    //     font-family: 'Courier New', Courier, monospace
+    //     line-height: 14px
+    //     content: '+'
+    //     background-color: #31b131
         
     tbody > tr > td
-        text-overflow: ellipsis
-        overflow: hidden
+        position: relative
         white-space: pre-wrap
         padding: 15px
         border: 1px solid #E0E0E0
@@ -71,6 +87,7 @@
         background: #E9EBEE
 
     tbody > tr > td:first-child
+        padding-left: 30px
         white-space: nowrap
 
 .expandButton
@@ -88,3 +105,67 @@
     position: relative
     left: -8px
     top: -3px
+
+@media (min-width: 0px)
+    #git-table
+        width: 95%
+        margin: auto
+
+        // thead > tr > th:nth-child(2), thead > tr > th:nth-child(3), thead > tr > th:nth-child(4), thead > tr > th:nth-child(5)
+        //     display: none
+        
+        // tbody > tr > td:nth-child(2), tbody > tr > td:nth-child(3), tbody > tr > td:nth-child(4), tbody > tr > td:nth-child(5)
+        //     display: none
+  
+@media (min-width: 321px)
+    #git-table
+        width: 95%
+        margin: auto
+
+        thead > tr > th:nth-child(2)
+            display: table-cell
+        
+        tbody > tr > td:nth-child(2)
+            display: table-cell
+
+@media (min-width: 470px)
+    #git-table
+        width: 95%
+        margin: auto
+
+        thead > tr > th:nth-child(3)
+            display: table-cell
+        
+        tbody > tr > td:nth-child(3)
+            display: table-cell
+
+@media (min-width: 680px)
+    #git-table
+        width: 95%
+        margin: auto
+
+        thead > tr > th:nth-child(4)
+            display: table-cell
+        
+        tbody > tr > td:nth-child(4)
+            display: table-cell
+
+@media (min-width: 800px)
+    #git-table
+        width: 85%
+        margin: auto
+
+        thead > tr > th:nth-child(5)
+            display: table-cell
+        
+        tbody > tr > td:nth-child(5)
+            display: table-cell    
+
+@media (min-width: 1250px)
+    #git-table
+        width: 60%
+        margin: auto
+@media (min-width: 1500px)
+    #git-table
+        width: 50%
+        margin: auto

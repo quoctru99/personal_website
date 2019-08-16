@@ -21,7 +21,6 @@ export default class GitHub extends React.Component{
         const numPage = this.state.numPage
         const currPage = this.state.currPage
         const per_page = this.state.per_page
-        console.log()
         this.foot = () => {
             var e = []
             for (let i = 1;i<=numPage;i++) {
@@ -33,7 +32,7 @@ export default class GitHub extends React.Component{
 
         this.body = data.map( (obj,i) => (
             <tr key={i} data={i} className="unique">
-                <td>{i=(i+1)+(currPage-1)*per_page} <button onClick={this.moreInfo.bind(this)} className="expandButton"> </button></td>
+                <td onClick={this.moreInfo}>{i=(i+1)+(currPage-1)*per_page}</td>
                 <td>{obj.repo}</td>
                 <td>{obj.language}</td>
                 <td>{obj.star}</td>
@@ -55,10 +54,10 @@ export default class GitHub extends React.Component{
                     
                     <div className="full-table">
                         
-                        <table id="git-table" align="center">
+                        <table id="git-table">
                             
                             <thead>
-                                <td colSpan="5">
+                                <td >
                                     
                                     <div className="custom_page">
                                         <select name="per_page" id="per_page">
@@ -152,77 +151,27 @@ export default class GitHub extends React.Component{
             })
     }
 
-    moreInfo(e, renderCondition) {
+    // moreInfo(e) {
+    //     var head = []
+    //     var hidden = []
 
-        var button
-        if(!e.tagName) {
-            button = e.target
-        } else {
-            button = e
+    //     document.querySelectorAll("thead > tr.unique > th").forEach( (e) => {
+    //         if(this.isHidden(e) === false) {
+    //             head.push(e)
+    //         }
+    //     })
+    //     var tds = e.target.parentElement.children
+    //     for (let item of tds) {
+    //         if(this.isHidden(item) === false) {
+    //             hidden.push(item)
+    //         }
+    //     }
 
+    //     console.log(head)
+    // }
 
-        }
-        
-
-        var more = []
-        var head = []
-        var childElement
-        document.querySelectorAll("#git-table > thead > tr > th")
-            .forEach((td) => {
-                if (td.style.display === "none") 
-                {
-                    head.push(td)
-                }
-            })
-        var parent = button.parentNode.parentNode
-        
-        if(parent.classList.contains('parent') && !renderCondition) {
-
-            button.classList.remove("expanded")
-            childElement = parent.nextSibling
-            childElement.parentElement.removeChild(childElement)
-            parent.classList.remove("parent")
-            return;
-
-        } else {
-
-            if(renderCondition) {
-                childElement = parent.nextSibling
-                childElement.remove()
-            }
-            
-            button.classList.add("expanded")
-            parent.classList.add('parent')
-            parent.querySelectorAll("td")
-            .forEach((td) => {
-                if (td.style.display === "none") 
-                {
-                    more.push(td)
-                }
-            })
-        }
-        
-        var divmore = document.createElement("tr")
-        divmore.setAttribute('class', 'child')
-        parent.after(divmore)
-
-        //render funciton
-        
-        var data = more.map((item,i) => (       
-            <li data={i} key={i}>
-                <span className="title">{head[i].innerText} </span>
-                <span className="Data">{item.innerText}</span>
-            </li>
-        ))
-
-        ReactDOM.render(
-        <td colSpan={5-more.length} className="moreinfo" >
-            <ul>
-                {data}
-            </ul>
-        </td>
-        , divmore)
-        
-    }
+    // isHidden(e) {
+    //     return e.offsetHeight > 0 && e.offsetWidth > 0
+    // }
     
 }
