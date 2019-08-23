@@ -9,7 +9,7 @@ export default class Footer extends React.Component {
     
     render () { 
         return (
-            <>
+            <div id="foot">
                 <div className="social-media clearfix">
                     <div className="icon clearfix">
                         <a className="referIcon" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/tru-nguyen-0275b2177/"><img src={linkedin} alt=""/></a>
@@ -20,7 +20,7 @@ export default class Footer extends React.Component {
                 <div className="location">
                     <p className="address">CHICAGO IL, 60630. (312)-208-2090. NGUYENQUOCTRU99@GMAIL.COM</p>
                 </div>
-            </>
+            </div>
         )
     }
 
