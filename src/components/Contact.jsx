@@ -12,8 +12,8 @@ export default class Contact extends Component {
             <>
                 <div id="contact">
                     <div id="contactForm" className="contactContainer">
-                        <fieldset>
-                            <legend><h1>Contact Form</h1></legend>
+
+                            <h1>Contact Form</h1>
                         
                             <div id="s">
                                 <div className="fullName">
@@ -33,8 +33,6 @@ export default class Contact extends Component {
                                     <button className="btn-submit">Submit</button>
                                 </div>
                             </div>
-                        
-                        </fieldset>
 
                         
                     </div>
@@ -47,7 +45,7 @@ export default class Contact extends Component {
 
     componentDidMount () {
         var textarea = document.getElementById("inform")
-        textarea.addEventListener('resize', (e) => {
+        textarea.addEventListener('mousedown', (e) => {
             console.log(e)
         })
     }
