@@ -44,6 +44,8 @@ export default class Contact extends Component {
     }
 
     componentDidMount () {
+        window.scroll(0,0)
+
         var textarea = document.getElementById("inform")
         textarea.addEventListener('mousedown', (e) => {
             console.log(e)

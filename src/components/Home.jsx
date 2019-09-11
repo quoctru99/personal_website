@@ -42,6 +42,10 @@ export default class Home extends Component {
         );
     }
 
+    componentDidMount() {
+        window.scroll(0,0)
+    }
+
     smoothScroll(e, id) {
         var ePosition = document.querySelector(id).offsetTop
         var navBarHeight = document.getElementById("navbar").offsetHeight

@@ -1,4 +1,3 @@
-import ReactDOM from 'react-dom';
 import React from 'react';
 import arrow from '../../svg/arrow.svg'
 import '../../styles/homePartsCss/github.sass'
