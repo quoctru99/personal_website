@@ -1,4 +1,4 @@
-#Personal Project!
+# Personal Project!
 
 ![](https://miro.medium.com/max/3600/1*Xt3l-_54wuxdsHpiolGP3g.jpeg)
 
@@ -8,5 +8,4 @@ technology stack my project is currently using:
     - Spring boot
     - Express
     - AWS
-___
 
