@@ -19,37 +19,27 @@ const styles = {
     },
 };
 
-class Navbar extends Component {
-    
-    // constructor (props) {
-    //     super(props)
-    //     this.state = {
-    //       clicked: false
-    //     }
-    // }
+export default function Navbar(props) {
 
-    render () {
-        window.addEventListener('scroll', function() {
-            if(window.pageYOffset > 0) {
-              document.getElementById("appbar").style.background = "white"
-            } else {
-                document.getElementById("appbar").style.background = "transparent"
-            }
-        });
-        return (
-            <div id="navbar">
-            <AppBar id="appbar" position="static" style={styles.abar}>
-              <Toolbar>
-                <Typography variant="h6" color="inherit" style={styles.grow}>
-                  Tru Nguyen
-                </Typography>
-                <Navigation data={this.props} />
-              </Toolbar>
-            </AppBar>
-          </div>
-        );
-    };
+  window.addEventListener('scroll', function() {
+      if(window.pageYOffset > 0) {
+        document.getElementById("appbar").style.background = "white"
+      } else {
+          document.getElementById("appbar").style.background = "transparent"
+      }
+  });
+
+  return (
+      <div id="navbar">
+      <AppBar id="appbar" position="static" style={styles.abar}>
+        <Toolbar>
+          <Typography variant="h6" color="inherit" style={styles.grow}>
+            Tru Nguyen
+          </Typography>
+          <Navigation data={props} />
+        </Toolbar>
+      </AppBar>
+    </div>
+  );
 }
-
-
-export default Navbar;
+    

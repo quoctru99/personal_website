@@ -5,8 +5,6 @@ import github from '../../svg/github.svg';
 import gmail from '../../svg/gmail.svg';
 
 export default class Footer extends React.Component {
-
-    
     render () { 
         return (
             <div id="foot">
@@ -23,6 +21,4 @@ export default class Footer extends React.Component {
             </div>
         )
     }
-
-
 }

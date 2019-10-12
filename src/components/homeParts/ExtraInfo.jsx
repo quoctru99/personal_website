@@ -3,7 +3,6 @@ import '../../styles/homePartsCss/ExtraInfo.sass'
 import flame from '../../svg/flame.svg'
 
 export default class ExtraInfo extends Component {
-    
     render() {
         return (
             <div className="information" id="infoSection">
