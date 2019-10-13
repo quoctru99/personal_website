@@ -1,3 +1,9 @@
+@mixin background($imgpath,$position:0 0,$repeat: no-repeat) 
+    background: 
+        image: url($imgpath)
+        position: $position
+        repeat: $repeat
+
 .information
     background: #353b48
 
@@ -6,15 +12,53 @@
 
 
         .coolproject
+            transition: all .5s
             margin-top: 40px
             display: flex
             justify-content: space-around
             flex-wrap: wrap
 
-            div
-                padding: 5px
-                flex: 1
-                min-width: 300px
+        .coolproject > div
+            cursor: pointer
+            background: white
+            border: 1px solid white
+            border-radius: 10px
+            margin: 10px
+            padding: 5px 5px 0px 5px
+            flex: 1
+            min-width: 300px
+            transition: all .5s ease
+        .coolproject > div:hover
+            transform: translateY(-5%)
+            
+
+.svg-icon
+    margin: auto
+    margin-top: 10px
+    width: 250px
+    height: 200px
+
+.pw
+    @include background('../../svg/webpage.svg')
+.sr
+    @include background('../../svg/stackrecette.svg')
+.ad
+    @include background('../../svg/AsmDecoder.svg')
+
+.pro-descrip
+    border: 1px solid black
+    border-radius: 10px
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2)
+    margin-bottom: 5px
+    text-align: justify
+    color: white
+    margin: 5px
+    padding: 10px
+    font-size: 1.05em
+    font-weight: 600
+    font-family: lato, Arial, sans-serif
+    letter-spacing: 1px
+    background: #e67e22
     
 
 #fire
@@ -24,6 +68,7 @@
 
 
 .txt-white
+    text-align: justify
     color: white
     margin: 0px
     padding: 5px
@@ -37,6 +82,7 @@
     text-align: center
 
 .txt-header
+    text-align: center
     font-weight: 900
     font-size: 25px
     letter-spacing: 1px

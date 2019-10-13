@@ -18,24 +18,6 @@ export default function Github () {
     const [numPage, setNumPage] = useState(0)
     const [currPage, setCurrPage] = useState(0)
     const [per_page, setPer_page] = useState(0)
-    
-
-    var test = [
-
-    ]
-
-    //setData([{
-        //id: test.length,
-        //value: test
-    //}])
-
-
-    var a = () => {
-        setData(test)
-        setNumPage(5)
-        setCurrPage(1)
-        setPer_page(5)
-    }
 
     console.log(numPage, currPage, per_page)
     console.log(data)
@@ -44,7 +26,7 @@ export default function Github () {
         //var per_page = document.getElementById("per_page")
         //var val = per_page.options[per_page.selectedIndex].value
         //getRepo(1,val, setting)
-        //await getUser(val, setting)
+        //await getUser(val, settingp)
 
         //per_page.addEventListener('change', async () => {
             //val = per_page.options[per_page.selectedIndex].value
@@ -75,15 +57,11 @@ export default function Github () {
     return (
         <>
             <div className="wrapper-table">
-                
-                    
                 <div className="full-table">
-                 <h1 id="body-title" className="titleres">My Github Repo</h1>       
+                <h1 id="body-title" className="titleres">My Github Repo</h1>       
                     <table id="git-table">
-                            
                         <thead>
                             <td >
-                                    
                                 <div className="custom_page">
                                     <select name="per_page" id="per_page">
                                         <option value="5">5 PER_PAGE</option>
@@ -91,9 +69,7 @@ export default function Github () {
                                         <option value="15">15 PER_PAGE</option>
                                     </select>
                                 </div>
-                                    
                             </td>
-
                             <tr className="unique">
                                 <th>#</th>
                                 <th>Repo Name</th>
@@ -117,10 +93,9 @@ export default function Github () {
                     </table>
                 </div>
             </div>
+
             <div id="pagination">
             </div>
-
-            <button></button>
             <Footer/>
         </>
     )

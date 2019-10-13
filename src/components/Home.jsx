@@ -1,25 +1,34 @@
 import React, { Component, useEffect } from 'react';
 import Typography from '@material-ui/core/Typography'
 import Footer from './homeParts/Footer';
-import ExtraInfo from './homeParts/ExtraInfo';
 import Recuit from './homeParts/Recuiter';
-import '../styles/home.sass'
-
-
+import '../styles/home.sass';
+import flame from '../svg/flame.svg'
+import Bound from 'bounds.js';
+import '../styles/homePartsCss/ExtraInfo.sass'
 
 export default function Home () {
     useEffect( () => {
         window.scroll(0,0)
+        const boundary = Bound({
+            margins: { bottom: 100 }
+        })
+        const projects = document.querySelector(".coolproject")
+
+        boundary.watch(projects, () => {
+            projects.classList.add("smoothTopDown")
+            boundary.unWatch(projects)
+        })
     })
 
     return (
         <>
             <div className="mainground">
-                <div id="intro">
-                    <Typography align='center' className="intro-text author" variant="headline" >
+                <div id="intro" className="smoothTopDown">
+                    <Typography align='center' className="intro-text author"  >
                         Tru Nguyen
                     </Typography>
-                    <Typography align='center' className="intro-text" variant="subheading">
+                    <Typography align='center' className="intro-text">
                     Diligent and inquisitive personality, currently study in Northeastern Illinois University as a Junior and major in Computer Science and Mathematics.
                     </Typography>
                     <div className="introButton">
@@ -28,7 +37,7 @@ export default function Home () {
                     </div>
                 </div>
                 <div className="expand">
-                    <Typography aling='center' className="intro-text" variant="h5">
+                    <Typography aling='center' className="intro-text">
                         Learn more about me
                     </Typography>
                     <i className="material-icons ic" onClick={(e) => smoothScroll(e, "#infoSection")}>expand_more</i>
@@ -39,6 +48,45 @@ export default function Home () {
             <Footer/>
         </>
     );
+}
+
+function ExtraInfo (props) {
+    return (
+        <div className="information" id="infoSection">
+            <div className="container">
+                <h1 className="txt-white txt-center" style={{letterSpacing:"1px",fontSize:"25px", fontFamily:"Permanent Marker"}}>COOL PROJECT ?</h1>
+                <p className="txt-white txt-center">These are projects which i develope, and i find it amusing and educational. through the process of creating it, i gained more skills that enable
+                me to become a better software engineer. And moreover, it's a set of guidance for me and a step which help me and prepare me for the real world project 
+                Below are three most prefered project in my perspective. <strong>All projects are in my GITHUB!</strong></p>
+                <div className="coolproject">
+                    <div className="asmdecoder">
+                        <h1 className="txt-white txt-header">AsmDecoder <img id="fire" src={flame} alt=""/></h1>
+                        <div className="svg-icon ad"></div>
+                        <p className="pro-descrip">In this project I implemented the VMTranslator,
+                        which translate the VM code to Binary code in 16bit computer named HACK.
+                        And a binary converter,
+                        which translate Hack machine code into binary code.
+                        </p>
+                    </div>
+                    <div className="stackrecette">
+                        <h1 className="txt-white txt-header">StackRecette <img id="fire" src={flame} alt=""/></h1>
+                        <div className="svg-icon sr"></div>
+                        <p className="pro-descrip">this project created for the final project in moble app development,
+                        which me and my friend create an app which help people create meal snack by giving the app ingredient. 
+                        </p>
+                    </div>
+                    <div className="personalweb">
+                    <h1 className="txt-white txt-header">Personalweb <img id="fire" src={flame} alt=""/></h1>
+                    <div className="svg-icon pw"></div>
+                    <p className="pro-descrip">This project intented to be my portfolio page using React, Nodejs and Java swing.
+                    it was my passion of learning new things and push me toward creation of this project.
+                        </p>
+                        <br/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
 }
 
 function smoothScroll(e, id) {
